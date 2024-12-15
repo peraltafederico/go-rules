@@ -46,7 +46,7 @@ func InitRouter() *chi.Mux {
 			return
 		}
 
-		url := fmt.Sprintf("https://%s.gorules.io/api/projects/%s/evaluate/fintech", os.Getenv("DOMAIN"), os.Getenv("PROJECT_ID"))
+		url := fmt.Sprintf("https://%s.gorules.io/api/projects/%s/evaluate/%s", os.Getenv("DOMAIN"), os.Getenv("PROJECT_ID"), os.Getenv("DOCUMENT_PATH"))
 
 		payload := strings.NewReader("{\"context\":{\"company.turnover\":\"2000000\",\"company.type\":\"INC\",\"company.country\":\"US\"},\"trace\":true}")
 
