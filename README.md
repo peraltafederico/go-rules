@@ -14,7 +14,7 @@ Install dependencies
 go mod tidy
 ```
 
-> Configure your envs. see .env.example
+Configure your envs. see .env.example
 
 Run in watch mode
 
