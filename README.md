@@ -4,7 +4,7 @@ runme:
   version: v3
 ---
 
-### Go Rules Example Projecy
+## Go Rules Example Project
 
 This project uses this tutorial as a base: https://docs.gorules.io/docs/fintech-company-analysis
 
@@ -14,14 +14,7 @@ Install dependencies
 go mod tidy
 ```
 
-Configure your envs
-
-```sh {"id":"01JF5XV2VJPX8Q46TE0VGAX27M"}
-export ACCESS_TOKEN="The access token for the API"
-export PROJECT_ID="The project ID"
-export DOMAIN="The domain"
-export DOCUMENT_PATH="The document path of your decision"
-```
+Configure your envs, see .env.example
 
 Run in watch mode
 
