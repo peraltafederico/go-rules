@@ -1,13 +1,13 @@
 package routes
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/joho/godotenv"
@@ -48,9 +48,14 @@ func InitRouter() *chi.Mux {
 
 		url := fmt.Sprintf("https://%s.gorules.io/api/projects/%s/evaluate/%s", os.Getenv("DOMAIN"), os.Getenv("PROJECT_ID"), os.Getenv("DOCUMENT_PATH"))
 
-		payload := strings.NewReader("{\"context\":{\"company.turnover\":\"2000000\",\"company.type\":\"INC\",\"company.country\":\"US\"},\"trace\":true}")
+		jsonData, err := json.Marshal(reqBody)
 
-		req, _ := http.NewRequest("POST", url, payload)
+		if err != nil {
+			log.Fatal(err)
+			return
+		}
+
+		req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
 
 		req.Header.Add("accept", "application/json")
 		req.Header.Add("content-type", "application/json")
